@@ -3,14 +3,7 @@ var gulp = require('gulp'),
     exec = require('child_process').execSync,
     log = require('fancy-log');
 
-gulp.task('NpmDeploy', function(){
-	exec('npm run deploy', function (err,outlog,errlog){
-		console.log(outlog);
-		console.log(errlog);
-	});
-})
-
-gulp.task('BuildDockerImage',['NpmDeploy'],function(){
+gulp.task('BuildDockerImage',function(){
 	exec('cat ~/pwd.txt | docker login --username ellensu --password-stdin');
 	exec('docker build -f Dockerfile -t ellensu/nginxweb:' + args.buildversion +' -t ellensu/nginxweb:latest --rm --no-cache .', function (err,outlog,errlog){
 		console.log(outlog);
