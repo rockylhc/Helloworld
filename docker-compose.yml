@@ -1,7 +1,7 @@
 version: '3'
 services:
   web:
-    image: ellensu/nginx
+    image: rockylhc/nginx
     container_name: web
     ports:
      - "80:80"
