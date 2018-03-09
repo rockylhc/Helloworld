@@ -4,19 +4,19 @@ var gulp = require('gulp'),
     log = require('fancy-log');
 
 gulp.task('BuildDockerImage',function(){
-	exec('cat pwd.txt | docker login --username ellensu --password-stdin');
-	exec('docker build -f Dockerfile -t ellensu/nginxweb:' + args.buildversion +' -t ellensu/nginxweb:latest --rm --no-cache .', function (err,outlog,errlog){
+	exec('cat pwd.txt | docker login --username rockylhc --password-stdin');
+	exec('docker build -f Dockerfile -t rockylhc/nginxweb:' + args.buildversion +' -t rockylhc/nginxweb:latest --rm --no-cache .', function (err,outlog,errlog){
 		console.log(outlog);
 		console.log(errlog);
 	});
 })
 
 gulp.task('PushImage',['BuildDockerImage'],function(){
-	exec('docker push ellensu/nginxweb:' + args.buildversion, function (err,outlog,errlog){
+	exec('docker push rockylhc/nginxweb:' + args.buildversion, function (err,outlog,errlog){
 		console.log(outlog);
 		console.log(errlog);
 	});
-	exec('docker push ellensu/nginxweb:latest', function (err,outlog,errlog){
+	exec('docker push rockylhc/nginxweb:latest', function (err,outlog,errlog){
 		console.log(outlog);
 		console.log(errlog);
 	});
