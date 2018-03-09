@@ -3,6 +3,8 @@ services:
   web:
     image: ellensu/nginx
     container_name: web
+    ports:
+     - "80:80"
     networks:
      - nginx
     environment:
