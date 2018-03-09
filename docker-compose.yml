@@ -5,11 +5,16 @@ services:
     container_name: web
     ports:
      - "80:80"
-    networks:
-     - nginx
+    deploy:
+      mode: replicated
+      replicas: 3
+      restart_policy:
+        condition: on-failure
+      update_config:
+        parallelism: 2
+        delay: 8s
+      placement:
+        constraints: [node.role != manager]
     environment:
      - NODE_ENV:"stg"
     restart: on-failure
-networks:
-  nginx:
-    driver: bridge
