@@ -23,7 +23,7 @@ gulp.task('PushImage',['BuildDockerImage'],function(){
 })
 //這段是for play-with-docker特別寫的 與實際server ssh不同
 gulp.task('SSHServer',['PushImage'],function() {
-	exec('ssh ip172-18-0-12-bah18mkprd20009cq2tg@direct.labs.play-with-docker.com -Y  -t -t');
+	exec('ssh ip172-18-0-12-bah18mkprd20009cq2tg@direct.labs.play-with-docker.com -Y  -q');
 })
 
 gulp.task('UpdateDockerCompose',['SSHServer'],function() {;
